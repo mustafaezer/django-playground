@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def index(request):
-    myDictionary = {
-        'subtitle': 'Hello, Im a subtitle coming from webapp/views.py!'
+    dictionary = {
+        'title': 'Hello, Im a title coming from webapp/views.py!'
     }
-    return render(request,  'webapp/home.html', context=myDictionary)
+    return render(request,  'webapp/home.html', context=dictionary)
