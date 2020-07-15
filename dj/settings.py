@@ -29,14 +29,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'personal',
+    'apps.personal',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.sites',
+    'django.contrib.flatpages',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.jinja2.Jinja2'
         ,
-        'DIRS': [os.path.join(BASE_DIR, 'personal/templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'apps/personal/templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
