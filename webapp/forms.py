@@ -5,8 +5,8 @@ from django.core import validators
 
 class CreateTopicForm(forms.ModelForm):
 
-    botcatcher = forms.CharField(
-        required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
+    botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[
+                                 validators.MaxLengthValidator(0)])
 
     class Meta:
         model = Topic
@@ -15,6 +15,9 @@ class CreateTopicForm(forms.ModelForm):
             'name': 'Give your topic a name',
         }
 
-    # def clean(self):
-    #     if self.cleaned_data['botcatcher']:
-    #         raise forms.ValidationError("Gotcha bot!")
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if name[0].isupper() != True:
+            raise forms.ValidationError(
+                "Topic names must start with an uppercased character")
+        return name
