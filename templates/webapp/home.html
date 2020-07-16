@@ -1,14 +1,38 @@
 {% extends "webapp/index.html" %}
 {% block content %}
-<div class="m-4">
-   <span class="badge badge-primary mb-4">
-      Playground
-   </span>
-   <div class="mb-4">
-      {{title}}
+<div style="display: flex; flex-direction: row;" class="m-4">
+   <div class="w-50">
+      <span class="badge badge-primary mb-4">
+         Playground
+      </span>
+      <div class="mb-4">
+         {{title}}
+      </div>
+      <div>
+         <img class="rounded w-100" src="static/images/desk.jpg" alt="Uh oh, didn't show!">
+      </div>
    </div>
-   <div>
-      <img class="rounded w-50" src="static/images/desk.jpg" alt="Uh oh, didn't show!">
+   {% if accessRecords %}
+   <div class="m-4 w-50">
+      <table class="table">
+         <thead>
+            <tr>
+               <th scope="col">Site Name</th>
+               <th scope="col">Accessed At</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for record in accessRecords %}
+            <tr>
+               <td>{{record.name}}</td>
+               <td>{{record.date}}</td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
    </div>
+   {% else %}
+   <span>No access records found.</span>
+   {% endif %}
 </div>
 {% endblock %}
