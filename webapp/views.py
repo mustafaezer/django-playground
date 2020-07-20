@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from webapp.models import AccessRecord, Topic, Webpage
 from webapp import forms
+from django.utils.translation import gettext as _
 
 
 def index(request):
@@ -10,7 +11,7 @@ def index(request):
 
     dictionary = {
         'accessRecords': webpagesList,
-        'title': 'Hello, Im a title coming from webapp/views.py!'
+        'title': _('Hello, lets get started!')
     }
 
     return render(request,  'webapp/home.html', context=dictionary)
